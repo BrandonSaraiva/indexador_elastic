@@ -28,13 +28,20 @@ Este é um projeto que permite indexar documentos no Elasticsearch com base nas 
 Vamos pegar os links de documentos do seguinte JSON:
 
 https://sistemas.anac.gov.br/dadosabertos/regulamentacao/Normas%20Publicadas/resolucoes/2022.json
+
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/024fa470-c84a-4d1a-b450-83123545109f)
-Aqui podemos ver que o link dos documentos se encontra na coluna outros, vamos especificar isso para o nosso código:
+
+- Aqui podemos ver que o link dos documentos se encontra na coluna outros, vamos especificar isso para o nosso código:
+
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/4c7f7cc7-6739-454c-afa2-e334034f4fa9)
-Agora nosso código sabe qual coluna deve percorrer para acessar o link dos documentos.
+
+- Agora nosso código sabe qual coluna deve percorrer para acessar o link dos documentos.
 ---------------------------------------------------------------------------------------
-Podemos ver na url de nosso json que após o /dadosabertos/ temos a descriçao do que esse json armazena, iremos informar isso ao nosso codigo para ele criar um index com essa informaçao:
+
+- Podemos ver na url de nosso json que após o /dadosabertos/ temos a descriçao do que esse json armazena, iremos informar isso ao nosso codigo para ele criar um index com essa informaçao:
+- 
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/76fc4a11-cc53-49fa-b94e-b7f60f768796)
+
 Veja como ficou o nome do index:
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/818c057a-fc92-4d32-8282-ff381f5a445b)
 
