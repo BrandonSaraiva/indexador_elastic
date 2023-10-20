@@ -23,7 +23,7 @@ Este é um projeto que permite indexar documentos no Elasticsearch com base nas 
 3. Forneça os detalhes necessários na main.py e execute.
 4. Os documentos serão indexados no Elasticsearch com base nas URLs das colunas especificadas no JSON.
 
-#Exemplo de uso:
+# Exemplo de uso:
 
 Vamos pegar os links de documentos do seguinte JSON:
 
