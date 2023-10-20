@@ -4,7 +4,7 @@ Este é um projeto que permite indexar documentos no Elasticsearch com base nas 
 
 ## Funcionalidades
 
-- **Coleta de Dados Personalizada**: Você pode especificar a URL do JSON, a coluna desejada e outros detalhes como o host do seu elastic.
+- **Coleta de Dados Personalizada**: Você pode especificar a URL do JSON, a coluna desejada e automatizar o nome dos index criados.
 
 - **Extração de Conteúdo HTTP**: O código verificará a coluna selecionada em busca de URLs HTTP e coletará todo o conteúdo desses links.
 
