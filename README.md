@@ -20,7 +20,7 @@ Este é um projeto que permite indexar documentos no Elasticsearch com base nas 
 
 1. Clone o repositório.
 2. Instale as bibliotecas necessárias: EXEMPLO`pip install elasticsearch requests pandas`.
-3. Execute o script e forneça os detalhes solicitados.
+3. Forneça os detalhes necessários na main.py e execute.
 4. Os documentos serão indexados no Elasticsearch com base nas URLs das colunas especificadas no JSON.
 
 #Exemplo de uso:
