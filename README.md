@@ -39,13 +39,13 @@ https://sistemas.anac.gov.br/dadosabertos/regulamentacao/Normas%20Publicadas/res
 ---------------------------------------------------------------------------------------
 
 - Podemos ver na url de nosso json que após o /dadosabertos/ temos a descriçao do que esse json armazena, iremos informar isso ao nosso codigo para ele criar um index com essa informaçao:
-- 
+  
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/76fc4a11-cc53-49fa-b94e-b7f60f768796)
 
-Veja como ficou o nome do index:
+- Veja como ficou o nome do index:
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/818c057a-fc92-4d32-8282-ff381f5a445b)
 
 ------------------------------------------------------------------------------------------------------------
-Dps de informar todas as informações necessárias e estar com nosso tika server e elasticsearch server rodando, podemos acompanhar o resultado de nossa indexão:
+- Dps de informar todas as informações necessárias e estar com nosso tika server e elasticsearch server rodando, podemos acompanhar o resultado de nossa indexão:
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/b0f379a4-ea1b-4ba7-bab0-ff30217c45c9)
 
