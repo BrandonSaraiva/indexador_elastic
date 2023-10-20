@@ -1,51 +1,51 @@
-# Document Indexer para Elasticsearch
+# Document Indexer for Elasticsearch
 
-Este é um projeto que permite indexar documentos no Elasticsearch com base nas URLs fornecidas em arquivos JSON. Ele oferece flexibilidade para selecionar uma coluna específica dos dados JSON e coletar o conteúdo da URL se essa coluna contiver um link HTTP para algum documento.
+This is a project that allows you to index documents in Elasticsearch based on URLs provided in JSON files. It provides flexibility to select a specific column from the JSON data and collect the URL content if that column contains an HTTP link to some document.
 
-## Funcionalidades
+## Functionalities
 
-- **Coleta de Dados Personalizada**: Você pode especificar a URL do JSON, a coluna desejada e automatizar o nome dos index criados.
+- **Custom Data Collection**: You can specify the JSON URL, the desired column and automate the name of the created indexes.
 
-- **Extração de Conteúdo HTTP**: O código verificará a coluna selecionada em busca de URLs HTTP e coletará todo o conteúdo desses links.
+- **HTTP Content Extraction**: The code will scan the selected column for HTTP URLs and collect all content from those links.
 
-- **Indexação Automática**: Um índice no Elasticsearch será criado automaticamente com base na URL do documento. Cada URL HTTP encontrada em colunas diferentes será tratada como um documento separado e salvo no Elasticsearch.
+- **Automatic Indexing**: An index in Elasticsearch will be automatically created based on the document URL. Each HTTP URL found in different columns will be treated as a separate document and saved in Elasticsearch.
 
-## Requisitos
+## Requirements
 
-- Além das bibliotecas importadas no código que está diponivel:
-- Baixar o tika-server e rodar no seu sistema.
-- Ter o servidor do elasticsearch rodando na sua maquina.
+- In addition to the libraries imported into the code that is available:
+- Download tika-server and run it on your system.
+- Have the elasticsearch server running on your machine.
 
-## Como Usar
+## How to use
 
-1. Clone o repositório.
-2. Instale as bibliotecas necessárias: EXEMPLO`pip install elasticsearch requests pandas`.
-3. Forneça os detalhes necessários na main.py e execute.
-4. Os documentos serão indexados no Elasticsearch com base nas URLs das colunas especificadas no JSON.
+1. Clone the repository.
+2. Install the necessary libraries: EXAMPLE`pip install elasticsearch requests pandas`.
+3. Provide the required details in main.py and run.
+4. Documents will be indexed in Elasticsearch based on the column URLs specified in the JSON.
 
-# Exemplo de uso:
+# Example of use:
 
-Vamos pegar os links de documentos do seguinte JSON:
+Let's get the document links from the following JSON:
 
 https://sistemas.anac.gov.br/dadosabertos/regulamentacao/Normas%20Publicadas/resolucoes/2022.json
 
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/024fa470-c84a-4d1a-b450-83123545109f)
 
-- Aqui podemos ver que o link dos documentos se encontra na coluna outros, vamos especificar isso para o nosso código:
+- Here we can see that the documents link is in the "outros" column, let's specify this for our code:
 
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/4c7f7cc7-6739-454c-afa2-e334034f4fa9)
 
-- Agora nosso código sabe qual coluna deve percorrer para acessar o link dos documentos.
+- Now our code knows which column to scroll through to access the documents link.
 ---------------------------------------------------------------------------------------
 
-- Podemos ver na url de nosso json que após o /dadosabertos/ temos a descriçao do que esse json armazena, iremos informar isso ao nosso codigo para ele criar um index com essa informaçao:
-  
+- We can see in the url of our json that after /dadosabertos/ we have the description of what this json stores, we will inform our code so that it can create an index with this information:
+- 
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/76fc4a11-cc53-49fa-b94e-b7f60f768796)
 
-- Veja como ficou o nome do index:
+- See what the name of the index looks like:
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/818c057a-fc92-4d32-8282-ff381f5a445b)
 
 ------------------------------------------------------------------------------------------------------------
-- Dps de informar todas as informações necessárias e estar com nosso tika server e elasticsearch server rodando, podemos acompanhar o resultado de nossa indexão:
+- After providing all the necessary information and having our tika server and elasticsearch server running, we can monitor the results of our indexing:
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/b0f379a4-ea1b-4ba7-bab0-ff30217c45c9)
 
