@@ -31,43 +31,86 @@ def indexar_documentos_no_elasticsearch(json_url, index_name, column_name, host)
     # Para cada item no JSON, indexa o documento no Elasticsearch.
     for item in data:
         # Obtenha os links do item a partir da coluna fornecida.
-        outros = item.get(column_name, '')
-        links = re.findall(r'href=["\'](http[s]?://[^"\']+)["\']', outros)
+        column_values = item.get(column_name, '')
+        links = re.findall(r'href=["\'](http[s]?://[^"\']+)["\']', column_values)
+        
+        # checking if the column_values is a link or a list of links
+        has_href = "href" in column_values
+        has_http = "http" in column_values
 
-        # Para cada link, indexa o documento no Elasticsearch.
-        for link in links:
-            # Obtenha o conteúdo do documento.
-            response = requests.get(link)
+        # in case the column_values is a direct link
+        if not has_href and has_http:
+            links_separates = column_values.split('\n')
+            if links_separates != ['']:
+                for link in links_separates:
+                    # Obtenha o conteúdo do documento.
+                    response = requests.get(link)
 
-            # Verifica se o documento foi obtido com sucesso.
-            if response.status_code != 200:
-                print("Falha ao obter o documento do link: " + link)
-                continue
+                    # Verifica se o documento foi obtido com sucesso.
+                    if response.status_code != 200:
+                        print("Falha ao obter o documento do link: " + link)
+                        continue
 
-            # Extrai o texto do documento.
-            parsed = parser.from_buffer(response.content)
-            text = parsed['content']
+                    # Extrai o texto do documento.
+                    parsed = parser.from_buffer(response.content)
+                    text = parsed['content']
 
-            # Cria um documento.
-            doc = {
-                "content": text
-            }
+                    # Cria um documento.
+                    doc = {
+                        "content": text
+                    }
 
-            es = Elasticsearch([host])  # Especifique os hosts do Elasticsearch
-            # indexando o documento
-            response = es.index(index=index_name, body=doc)
+                    es = Elasticsearch([host])  # Especifique os hosts do Elasticsearch
+                    # indexando o documento
+                    response = es.index(index=index_name, body=doc)
 
-            # Imprimindo o resultado da indexação.
-            print(response)
+                    # Imprimindo o resultado da indexação.
+                    print(response)
 
-            # Verifique se o documento foi indexado com sucesso.
-            if response['result'] == 'created':
-                count += 1
-                print("\nDocumento indexado com sucesso no Elasticsearch.\n")
-                print("=--------------------------------------------------=\n")
-            else:
-                print("\n!Erro ao indexar o documento no Elasticsearch.!\n")
-                print("=--------------------------------------------------=\n")
+                    # Verifique se o documento foi indexado com sucesso.
+                    if response['result'] == 'created':
+                        count += 1
+                        print("\nDocumento indexado com sucesso no Elasticsearch.\n")
+                        print("=--------------------------------------------------=\n")
+                    else:
+                        print("\n!Erro ao indexar o documento no Elasticsearch.!\n")
+                        print("=--------------------------------------------------=\n")
+        else:
+            # Para cada link, indexa o documento no Elasticsearch.
+            for link in links:
+                print("eeee", link)
+                # Obtenha o conteúdo do documento.
+                response = requests.get(link)
+
+                # Verifica se o documento foi obtido com sucesso.
+                if response.status_code != 200:
+                    print("Falha ao obter o documento do link: " + link)
+                    continue
+
+                # Extrai o texto do documento.
+                parsed = parser.from_buffer(response.content)
+                text = parsed['content']
+
+                # Cria um documento.
+                doc = {
+                    "content": text
+                }
+
+                es = Elasticsearch([host])  # Especifique os hosts do Elasticsearch
+                # indexando o documento
+                response = es.index(index=index_name, body=doc)
+
+                # Imprimindo o resultado da indexação.
+                print(response)
+
+                # Verifique se o documento foi indexado com sucesso.
+                if response['result'] == 'created':
+                    count += 1
+                    print("\nDocumento indexado com sucesso no Elasticsearch.\n")
+                    print("=--------------------------------------------------=\n")
+                else:
+                    print("\n!Erro ao indexar o documento no Elasticsearch.!\n")
+                    print("=--------------------------------------------------=\n")
 
     # Imprima o total de documentos indexados.
     print("Total de documentos indexados:", count)
