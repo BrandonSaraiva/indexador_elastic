@@ -49,3 +49,10 @@ https://sistemas.anac.gov.br/dadosabertos/regulamentacao/Normas%20Publicadas/res
 - After providing all the necessary information and having our tika server and elasticsearch server running, we can monitor the results of our indexing:
 ![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/b0f379a4-ea1b-4ba7-bab0-ff30217c45c9)
 
+# CHANGE IN CODE
+
+I thought it would be better to create a modal to insert the url, enter the name of the index and the https column, I think it is more practical and makes it easier to create an executable in the future:
+
+![image](https://github.com/BrandonSaraiva/indexador_elastic/assets/90096835/f16127c7-cbe4-498c-984a-c15605adf88e)
+
+
